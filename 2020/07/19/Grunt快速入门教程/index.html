@@ -464,6 +464,23 @@ grunt   //控制台提示watch已经开始监听, 修改保存后自动编译处
             
     </article>
     
+      <article class="blog-post-block blog-post-page-content" style="margin-top:2.5em;">
+      
+      <div class="comment"></div>
+      <script>
+          new Valine({
+              av: AV, // source from av-min.js
+              el: '.comment' ,
+              notify:false, // 邮件提醒 v1.1.4新增
+              verify:false, // 验证码 v1.1.4新增
+              app_id: '',
+              app_key: 'true',
+              placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+              path:window.location.pathname // 路径配置 v1.1.5新增，可填window.location.href
+          });
+      </script>
+      </article>
+      
 </div>
 
                 
