@@ -1,278 +1,609 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-  <meta name="renderer" content="webkit">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no", user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="jrjwhite个人博客">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="jrjwhite个人博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="jrjwhite">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
   <title>jrjwhite个人博客</title>
-  <link rel="shortcut icon" href="">
-  
-    
-    
-      <link rel="stylesheet" href="/css/bootstrap.min.css">
-    
-      <link rel="stylesheet" href="/css/font-awesome.min.css">
-    
-      <link rel="stylesheet" href="/css/atom-one-dark.css">
-    
-      <link rel="stylesheet" href="/css/jquery.fancybox.css">
-    
-      <link rel="stylesheet" href="/css/nprogress.min.css">
-    
-      <link rel="stylesheet" href="/css/valine.css">
-    
-      <link rel="stylesheet" href="/css/life.css">
-    
-  
-
-  
-
-  <!-- jQuery first, then Tether, then Bootstrap JS. -->
-  
-  
-  
-    <script src="/js/jquery-2.2.4.min.js"></script>
-  
-    <script src="https://cdn1.lncld.net/static/js/3.1.0/av-min.js"></script>
-  
-    <script src="/js/jquery.pjax.js"></script>
-  
-    <script src="/js/nprogress.min.js"></script>
-  
-    <script src="/js/tether.min.js"></script>
-  
-    <script src="/js/bootstrap.min.js"></script>
-  
-    <script src="/js/highlight.min.js"></script>
-  
-    <script src="/js/highlightjs-line-numbers.min.js"></script>
-  
-    <script src="/js/jquery.fancybox.js"></script>
-  
-    <script src="/js/jquery.qrcode.min.js"></script>
-  
-    <script src="/js/Valine.min.js"></script>
-  
-  
-<meta name="generator" content="Hexo 4.2.1"></head>
-<body>
-<script>AV.init({appId:'',appKey:'true'});</script>
-<script type="text/javascript">
-      var config = {
-            ClasS: 'Counter',
-            el:'.views',
-            elP: '.views-post'
-      }
-</script>
-<div class="container">
-    <div class="row blog-box-shadow">
-        <!--博客主栏开始-->
-        <div class="col-xl-9 col-lg-12 blog-main" id="pjax-box">
-            <header class="blog-header">
-                <a href="http://yoursite.com" class="blog-header-mobile-title">jrjwhite个人博客</a>
-                <a href="javascript:;" class="blog-header-navbar-btn"><i class="fa fa-bars"></i></a>
-                <nav class="blog-header-navbar blog-header-fixed">
-                    <ul class="blog-navbar-links">
-                        
-                          <li class="blog-nav-item"><a href="/" class="transition">首页</a></li>
-                        
-                          <li class="blog-nav-item"><a href="/about/" class="transition">关于</a></li>
-                        
-                          <li class="blog-nav-item"><a href="/links/" class="transition">链接</a></li>
-                        
-                        <div class="blog-navbar-right">
-                            <form action="">
-                                <div class="input-group">
-                                    <input type="text" class="blog-header-search" placeholder="search...">
-                                    <buttn type="submit" class="blog-header-search-btn"><i class="fa fa-search"></i></buttn>
-                                </div>
-                            </form>
-                        </div>
-                    </ul>
-                </nav>
-            </header>
-                
-<div class="blog-main-post">
-	<div class="index-post-br"></div>
   
 
 
 
-<article class="blog-post-block">
-    
 
-    <div class="blog-post-block-padding">
-        <a href="/2020/07/19/Grunt快速入门教程/">Grunt快速入门教程</a>
-        <section>
-            
-                
-                
-Grunt介绍
 
-中文主页 : http://www.gruntjs.net/
-是一套前端自动化构建工具，一个基于nodeJs的命令行工具
-它是一个任务运行器, 配合其丰富强大的插件
-常用功能:
-合并文件(js/css)
-压缩文件(js/css)
-语法检查(
-                ...
-            
-        </section>
-        <footer>
-        
-            <time datetime="2020-07-19T02:13:24.000Z"><i class="fa fa-clock-o"></i>2020-07-19</time>
-        
-        
-        
-        <span>
-            <i class="fa fa-eye"></i>
-            <span id="/2020/07/19/Grunt%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/" class="views"  title="Grunt快速入门教程"></span>
-        </span>
-        
-        
-        
-        </footer>
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
-</article>
+  </div>
 
+  <div class="site-meta">
 
-<article class="blog-post-block">
-    
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">jrjwhite个人博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
 
-    <div class="blog-post-block-padding">
-        <a href="/2020/07/19/hello-world/">Hello World</a>
-        <section>
-            
-                
-                Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can
-                ...
-            
-        </section>
-        <footer>
-        
-            <time datetime="2020-07-19T01:39:25.987Z"><i class="fa fa-clock-o"></i>2020-07-19</time>
-        
-        
-        
-        <span>
-            <i class="fa fa-eye"></i>
-            <span id="/2020/07/19/hello-world/" class="views"  title="Hello World"></span>
-        </span>
-        
-        
-        
-        </footer>
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
     </div>
-</article>
-
-
-
-  
-    <nav id="pagination" class="blog-pagination">
-            <span class="page-number current">1</span>
-    </nav>
-
- </div>
-
-                
-            <footer class="blog-footer">
-                <p class="blog-footer-left">Copyright ©  2020 <a href="http://yoursite.com">jrjwhite个人博客</a></p>
-                <p class="blog-footer-right">Powered by <a href="https://hexo.io" target="_blank">Hexo</a>,Theme <a href="https://note.isweic.com/themes-life/" target="_blank">Life</a></p>
-            </footer>
-        </div><!--博客主栏结束-->
-        <!--博客侧边栏开始-->
-        <div class="col-xl-3 blog-sidebar">
-            <div class="blog-sidebar-title">
-                <a href="">jrjwhite个人博客</a>
-            </div>
-            <div class="blog-sidebar-logo">
-                <img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2095969987,4140822860&fm=26&gp=0.jpg">
-            </div>
-            <div class="blog-sidebar-count blog-sidebar-padding">
-                <div class="blog-sidebar-count-left">
-                    <p class="blog-sidebar-count-p">2</p>
-                    <span class="blog-sidebar-count-span">文章</span>
-                </div>
-                <div class="blog-sidebar-count-right">
-                    <p class="blog-sidebar-count-p">0</p>
-                    <span class="blog-sidebar-count-span">标签</span>
-                </div>
-                <div style="clear: both;"></div>
-            </div>
-            <div class="blog-sidebar-icon blog-sidebar-padding">
-                <ul>
-                    <li><a href="https://github.com/jrjwhite" class="icon-github" target="_blank" data-toggle="tooltip" data-placement="top" title="Github"><i class="fa fa-github"></i></a></li>
-                    <li><a href="" class="icon-weibo" target="_blank" data-toggle="tooltip" data-placement="top" title="新浪微博"><i class="fa fa-weibo"></i></a></li>
-                    <li><a href="" class="icon-twitter" target="_blank" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                    <!--<li><a href="" class="icon-facebook" target="_blank" data-toggle="tooltip" data-placement="top" title="FaceBook"><i class="fa fa-facebook"></i></a></li>-->
-                    <li><a href="mailto:" class="icon-email" data-toggle="tooltip" data-placement="top" title="E-Mail"><i class="fa fa-envelope"></i></a></li>
-                    <li><a href="" class="icon-rss" data-toggle="tooltip" target="_blank" data-placement="top" title="RSS"><i class="fa fa-rss"></i></a></li>
-                </ul>
-            </div>
-            <div class="blog-sidebar-categories">
-                <h4 class="blog-sidebar-h4"><i class="fa fa-folder-open"></i>&nbsp;文章分类</h4>
-                <ul class="list-group blog-sidebar-padding">
-                  
-                </ul>
-            </div>
-            <div class="blog-sidebar-tags">
-                <h4 class="blog-sidebar-h4"><i class="fa fa-tag"></i>&nbsp;标签云</h4>
-                <ul class="blog-sidebar-tags-ul blog-sidebar-padding">
-                  
-                </ul>
-            </div>
-            <script>
-              // 博客侧栏标签云随机色
-              var tag_cloud = $('.tag-could');
-              tag_cloud.each(function () {
-                  var Cnum = 9;
-                  var Crand = parseInt(Math.random() * Cnum);
-                  $(this).addClass("tag-could" + Crand);
-              })
-            </script>
-            <!--返回顶部按钮-->
-            <div class="retop">
-                <i class="fa fa-angle-up"></i>
-            </div>
-        </div><!--博客侧边栏结束-->
-    </div>
+  </div>
 </div>
-<script src="/js/LeanStatistics.min.js"></script>
-<script src="/js/Life.js"></script>
-<script type="text/javascript">
-    hljs.initHighlightingOnLoad();
-    hljs.initLineNumbersOnLoad();
-    otherF();
-    LeanStatistics();
-    $(document).pjax('a', '#pjax-box', {fragment:'#pjax-box', timeout:8000}).on('pjax:complete', function() {
-      $('pre code').each(function(i, block){
-        hljs.highlightBlock(block);
-      })
-      $('code.hljs').each(function(i, block) {
-        hljs.lineNumbersBlock(block);
-      });
-      LeanStatistics();
-    }).on('pjax:start', function() { NProgress.start(); }).on('pjax:end',   function() {
-      NProgress.done();
-      otherF();
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/19/Grunt%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="jrjwhite">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jrjwhite个人博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/19/Grunt%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">Grunt快速入门教程</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-07-19 10:13:24 / 修改时间：10:15:54" itemprop="dateCreated datePublished" datetime="2020-07-19T10:13:24+08:00">2020-07-19</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li><p>Grunt介绍</p>
+<ul>
+<li>中文主页 : <a href="http://www.gruntjs.net/" target="_blank" rel="noopener">http://www.gruntjs.net/</a></li>
+<li>是一套前端<strong>自动化构建</strong>工具，一个基于nodeJs的命令行工具</li>
+<li>它是一个<strong>任务运行器</strong>, 配合其丰富强大的<strong>插件</strong></li>
+<li>常用功能:<ul>
+<li><strong>合并文件</strong>(js/css)</li>
+<li><strong>压缩文件</strong>(js/css)</li>
+<li><strong>语法检查</strong>(js)</li>
+<li><strong>less/sass预编译处理</strong> </li>
+<li>其它…</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>安装nodejs, 查看版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure></li>
+<li><p>创建一个简单的应用grunt_test</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">  |- build----------构建生成的文件所在的文件夹</span><br><span class="line">  |- src------------源码文件夹   </span><br><span class="line">      |- js---------------js源文件夹</span><br><span class="line">      |- css--------------css源文件夹</span><br><span class="line">  |- index.html-----页面文件</span><br><span class="line">  |- Gruntfile.js---grunt配置文件(注意首字母大写)</span><br><span class="line">  |- package.json---项目包配置文件</span><br><span class="line">      &#123;</span><br><span class="line">        &quot;name&quot;: &quot;grunt_test&quot;,</span><br><span class="line">        &quot;version&quot;: &quot;1.0.0&quot;   </span><br><span class="line">      &#125;</span><br><span class="line">  &#96;&#96;&#96;  </span><br><span class="line">* 全局安装 grunt-cli</span><br></pre></td></tr></table></figure>
+<p>npm install -g grunt-cli </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* 安装grunt</span><br></pre></td></tr></table></figure>
+<p>npm install grunt –save-dev</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* 运行构建项目命令</span><br></pre></td></tr></table></figure>
+<p>grunt  //提示 Warning: Task “default” not found</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">* 配置文件: Gruntfile.js</span><br><span class="line">  * 此配置文件本质就是一个node函数类型模块</span><br><span class="line">  * 配置编码包含3步:</span><br><span class="line">    1. 初始化插件配置</span><br><span class="line">    2. 加载插件任务</span><br><span class="line">    3. 注册构建任务</span><br><span class="line">  * 基本编码:</span><br></pre></td></tr></table></figure>
+<p>  module.exports = function(grunt){</p>
+<pre><code>// 1. 初始化插件配置
+grunt.initConfig({
+    //主要编码处
+});
+// 2. 加载插件任务
+// grunt.loadNpmTasks(&apos;grunt-contrib-concat&apos;);
+// 3. 注册构建任务
+grunt.registerTask(&apos;default&apos;, []);</code></pre><p>  };</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">  * 命令: grunt  &#x2F;&#x2F;提示成功, 但没有任何效果(还没有使用插件定义任务)</span><br><span class="line">* Grunt插件介绍</span><br><span class="line">  * grunt官网的插件列表页面 http:&#x2F;&#x2F;www.gruntjs.net&#x2F;plugins </span><br><span class="line">  * 插件分类:</span><br><span class="line">    * grunt团队贡献的插件 : 插件名大都以contrib-开头</span><br><span class="line">    * 第三方提供的插件 : 大都不以contrib-开头</span><br><span class="line">  * 常用的插件:</span><br><span class="line">    * grunt-contrib-clean——清除文件(打包处理生成的)</span><br><span class="line">    * grunt-contrib-concat——合并多个文件的代码到一个文件中</span><br><span class="line">    * grunt-contrib-uglify——压缩js文件</span><br><span class="line">    * grunt-contrib-jshint——javascript语法错误检查；</span><br><span class="line">    * grunt-contrib-cssmin——压缩&#x2F;合并css文件</span><br><span class="line">    * grunt-contrib-htmlmin——压缩html文件</span><br><span class="line">    * grunt-contrib-imagemin——压缩图片文件(无损)</span><br><span class="line">    * grunt-contrib-copy——复制文件、文件夹</span><br><span class="line">    * **grunt-contrib-requirejs**——合并压缩requirejs管理的所有js模块文件</span><br><span class="line">    * grunt-contrib-watch——实时监控文件变化、调用相应的任务重新执行</span><br><span class="line">* 合并js: 使用concat插件</span><br><span class="line">  * 命令:</span><br></pre></td></tr></table></figure>
+<p>  npm install grunt-contrib-concat –save-dev</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">* 编码:</span><br><span class="line">  * src&#x2F;js&#x2F;test1.js</span><br></pre></td></tr></table></figure>
+<pre><code>(function () {
+  function add(num1, num2) {
+    return num1 + num2;
+  }
+  console.log(add(10, 20));
+})();
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* src&#x2F;js&#x2F;test2.js</span><br></pre></td></tr></table></figure>
+(function () {
+  var arr = [2,3,4].map(function (item, index) {
+    return item+1;
+  });
+  console.log(arr);
+})();
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">* 配置: Gruntfile.js</span><br><span class="line">  * 配置任务:</span><br></pre></td></tr></table></figure>
+ concat: {
+   options: { //可选项配置
+     separator: &apos;;&apos;   //使用;连接合并
+   },
+   build: { //此名称任意
+     src:  [&quot;src/js/*.js&quot;],  //合并哪些js文件
+     dest: &quot;build/js/built.js&quot; //输出的js文件
+   }
+ }
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* 加载插件:</span><br></pre></td></tr></table></figure>
+grunt.loadNpmTasks(&apos;grunt-contrib-concat&apos;);
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* 注册任务:</span><br></pre></td></tr></table></figure>
+grunt.registerTask(&apos;default&apos;, [&apos;concat&apos;]);
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* 命令:</span><br></pre></td></tr></table></figure>
+grunt   //会在build下生成一个built.js
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">* 压缩js: 使用uglify插件</span><br><span class="line">  * 下载</span><br></pre></td></tr></table></figure></code></pre><p>  npm install grunt-contrib-uglify –save-dev</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">* 配置: Gruntfile.js</span><br><span class="line">  * 配置任务:</span><br></pre></td></tr></table></figure>
+<pre><code>pkg : grunt.file.readJSON(&apos;package.json&apos;),
+uglify : {
+  options: {  //不是必须的
+    banner: &apos;/*! &lt;%= pkg.name %&gt; - v&lt;%= pkg.version %&gt; - &apos; +
+    &apos;&lt;%= grunt.template.today(&quot;yyyy-mm-dd&quot;) %&gt; */&apos;
+  },
+  build: {
+    files: {
+      &apos;build/js/built-&lt;%=pkg.name%&gt;-&lt;%=pkg.version%&gt;.min.js&apos;: [&apos;build/js/built.js&apos;]
+    }
+  }
+}
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* 加载任务:</span><br></pre></td></tr></table></figure>
+grunt.loadNpmTasks(&apos;grunt-contrib-uglify&apos;);
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* 注册任务:</span><br></pre></td></tr></table></figure>
+grunt.registerTask(&apos;default&apos;, [&apos;concat&apos;, &apos;uglify&apos;]);
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* 命令:</span><br></pre></td></tr></table></figure>
+grunt   //会在build下生成一个压缩的js文件
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">* js语法检查: 使用jshint插件</span><br><span class="line">  * 命令:</span><br></pre></td></tr></table></figure></code></pre><p>  npm install grunt-contrib-jshint –save-dev</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* 编码: .jshintrc</span><br></pre></td></tr></table></figure>
+<p>   {</p>
+<pre><code>&quot;curly&quot;: true,
+&quot;eqeqeq&quot;: true,
+&quot;eqnull&quot;: true,
+&quot;expr&quot; : true,
+&quot;immed&quot;: true,
+&quot;newcap&quot;: true,
+&quot;noempty&quot;: true,
+&quot;noarg&quot;: true,
+&quot;regexp&quot;: true,
+&quot;browser&quot;: true,
+&quot;devel&quot;: true,
+&quot;node&quot;: true,
+&quot;boss&quot;: false,
+
+//不能使用未定义的变量
+&quot;undef&quot;: true,
+//语句后面必须有分号
+&quot;asi&quot;: false,
+//预定义不检查的全局变量
+&quot;predef&quot;: [ &quot;define&quot;, &quot;BMap&quot;, &quot;angular&quot;, &quot;BMAP_STATUS_SUCCESS&quot;]</code></pre><p>   }</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* 修改src&#x2F;js&#x2F;test1.js</span><br></pre></td></tr></table></figure>
+<p>  (function () {</p>
+<pre><code>function add(num1, num2) {
+  num1 = num1 + num3
+  return num1 + num2;
+}
+console.log(add(10, 20));</code></pre><p>  })();</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">* 配置 : Gruntfile.js</span><br><span class="line">  * 配置任务:</span><br></pre></td></tr></table></figure>
+<pre><code>jshint : {
+  options: {
+    jshintrc : &apos;.jshintrc&apos; //指定配置文件
+  },
+  build : [&apos;Gruntfile.js&apos;, &apos;src/js/*.js&apos;] //指定检查的文件
+}
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* 加载任务:</span><br></pre></td></tr></table></figure>
+grunt.loadNpmTasks(&apos;grunt-contrib-jshint&apos;);
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* 注册任务:</span><br></pre></td></tr></table></figure>
+grunt.registerTask(&apos;default&apos;, [&apos;concat&apos;, &apos;uglify&apos;, &apos;jshint&apos;]);
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* 命令:</span><br></pre></td></tr></table></figure>
+grunt   //提示变量未定义和语句后未加分号 --&gt;修改后重新编译
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">* 使用cssmin插件</span><br><span class="line">  * 安装:</span><br></pre></td></tr></table></figure></code></pre><p>  npm install grunt-contrib-cssmin –save-dev</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">* 编码: </span><br><span class="line">  * test1.css</span><br></pre></td></tr></table></figure>
+<pre><code>#box1 {
+  width: 100px;
+  height: 100px;
+  background: red;
+}
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* test2.css</span><br></pre></td></tr></table></figure>
+#box2 {
+  width: 200px;
+  height: 200px;
+  background: blue;
+}
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* index.html</span><br></pre></td></tr></table></figure>
+&lt;link rel=&quot;stylesheet&quot; href=&quot;build/css/output.min.css&quot;&gt;
+&lt;div id=&quot;box1&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;box2&quot;&gt;&lt;/div&gt;
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">    </span><br><span class="line">* 配置 : Gruntfile.js</span><br><span class="line">  * 配置任务:</span><br></pre></td></tr></table></figure>
+cssmin:{
+  options: {
+    shorthandCompacting: false,
+    roundingPrecision: -1
+  },
+  build: {
+    files: {
+        &apos;build/css/output.min.css&apos;: [&apos;src/css/*.css&apos;]
+    }
+  }
+}
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* 加载任务:</span><br></pre></td></tr></table></figure>
+grunt.loadNpmTasks(&apos;grunt-contrib-cssmin&apos;);
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* 注册任务:</span><br></pre></td></tr></table></figure>
+grunt.registerTask(&apos;default&apos;, [&apos;concat&apos;, &apos;uglify&apos;, &apos;jshint&apos;, &apos;cssmin&apos;]);
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* 命令:</span><br></pre></td></tr></table></figure>
+grunt    //在build/css/下生成output.min.css
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">* 使用watch插件（真正实现自动化） </span><br><span class="line">  * 命令: npm install grunt-contrib-watch --save-dev</span><br><span class="line">  * 配置 : Gruntfile.js</span><br><span class="line">  </span><br><span class="line">    * 配置任务:</span><br></pre></td></tr></table></figure>
+watch : {
+  scripts : {
+    files : [&apos;src/js/*.js&apos;, &apos;src/css/*.css&apos;],
+    tasks : [&apos;concat&apos;, &apos;jshint&apos;, &apos;uglify&apos;, &apos;cssmin&apos;],
+    options : {spawn : false}  
+  }
+}
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* 加载任务:</span><br></pre></td></tr></table></figure>
+grunt.loadNpmTasks(&apos;grunt-contrib-watch&apos;);
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* 注册任务:</span><br></pre></td></tr></table></figure>
+grunt.registerTask(&apos;default&apos;, [&apos;concat&apos;, &apos;uglify&apos;, &apos;jshint&apos;, &apos;watch&apos;]);
+改进：grunt.registerTask(&apos;myWatch&apos;, [&apos;default&apos;,&apos;watch&apos;]);
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* 命令:</span><br></pre></td></tr></table></figure>
+grunt   //控制台提示watch已经开始监听, 修改保存后自动编译处理
+```</code></pre></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/19/hello-world/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="jrjwhite">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jrjwhite个人博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/19/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-19 09:39:25" itemprop="dateCreated datePublished" datetime="2020-07-19T09:39:25+08:00">2020-07-19</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
     });
+  }
 </script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">jrjwhite</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">jrjwhite</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
 </body>
 </html>
