@@ -196,7 +196,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-09-11 16:27:48" itemprop="dateModified" datetime="2021-09-11T16:27:48+08:00">2021-09-11</time>
+                <time title="修改时间：2021-09-12 23:29:58" itemprop="dateModified" datetime="2021-09-12T23:29:58+08:00">2021-09-12</time>
               </span>
 
           
@@ -212,8 +212,197 @@
       
           <h2 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a>webpack</h2><p>webpack:一种前端资源构建工具，一个静态模块打包器</p>
 <p>webpack本身可以打包js/json文件，不能打包样式等其他资源，这就需要自己去配置webpack.config.js(配置文件),且在终端输入webpack，会加载里面的配置去打包文件。所有的构建工具都是基于nodejs平台运行的，模块化默认采用commonjs.</p>
-<h2 id="webpack基本配置模块"><a href="#webpack基本配置模块" class="headerlink" title="webpack基本配置模块"></a>webpack基本配置模块</h2><pre><code>//resolve用来拼接绝对路径的方法
+<h2 id="webpack开发环境的基本配置"><a href="#webpack开发环境的基本配置" class="headerlink" title="webpack开发环境的基本配置"></a>webpack开发环境的基本配置</h2><pre><code>//resolve用来拼接绝对路径的方法
 const {resolve} = require(&apos;path&apos;);
+//引入插件
+const HtmlWebpackPlugin = require(&apos;./html-webpack-plugin&apos;);
+module.exports = {
+//webpack配置
+//打包入口文件
+entry: &apos;./src/index.js,
+//输出文件
+output:{
+    //输出文件名
+  filename:&apos;bulit.js&apos;,
+    //输出路径
+    //_dirname nodejs的变量，代表当前文件的目录的绝对路径
+  path: resolve(_dirname,&apos;build&apos;)
+    },
+//loader的配置
+module:{
+    //详细的loader配置
+    rules:{
+        test:/\.less$/,
+        use:{
+            &apos;style-loader&apos;,
+            &apos;css-loader&apos;,
+            &apos;less-loader&apos;
+        }
+    },
+    rules:{
+            //匹配哪些文件
+            test:/\.css$/,
+            //使用哪些loader进行处理
+            use:[
+                //use数组中loader执行顺序：从右到左，从下到上，依次执行
+                //创建style标签，将js中的样式资源插入到html文件里的head标签中生效
+                &apos;style.loader&apos;,
+                //将css文件变成commonjs模块加载到js中，里面内容是样式字符串
+                &apos;css-loader&apos;
+            ]
+        },
+         rules:{
+            test:/\.(jpg|png|gif)$/,
+            options:{
+                limit: 8*1024,//不能大于8KB
+                name:&apos;[hash:10].[ext]&apos;//文件压缩后的名字
+                outputPath: &apos;imgs&apos;,
+                //url-loader默认使用es6模块化解析，而html-loader引入图片是commonjs，解析时会出问题
+                esModule:false
+            }
+        },
+        {
+            //处理其他资源
+            exclude:/\.(html|js|css|less|jpg|png|gif)/,
+            loader:&apos;file-loader&apos;,
+            options:{
+                name:&apos;[hash:10].[ext]&apos;//文件压缩后的名字
+            }
+        }
+    }
+//plugins的配置
+plugins:{
+    //详细plugins的配置
+    new HtmlWebpackPlugin({
+        template:&apos;./src/index.html&apos;
+    })
+},
+devServer:{
+    contentBase:resolve(_dirname,&apos;bulid&apos;),
+    compress:true,
+    port:3000,
+    open:true
+}
+//模式
+mode:&apos;development&apos;,//开发模式
+//mode:&apos;production&apos; //生产模式
+}</code></pre><h2 id="webapck打包样式资源配置"><a href="#webapck打包样式资源配置" class="headerlink" title="webapck打包样式资源配置"></a>webapck打包样式资源配置</h2><pre><code>//详细的loader配置
+    rules:{
+        test:/\.less$/,
+        use:{
+            &apos;style-loader&apos;,
+            &apos;css-loader&apos;,
+            &apos;less-loader&apos;
+        }
+    },
+    rules:{
+            //匹配哪些文件
+            test:/\.css$/,
+            //使用哪些loader进行处理
+            use:[
+                //use数组中loader执行顺序：从右到左，从下到上，依次执行
+                //创建style标签，将js中的样式资源插入到html文件里的head标签中生效
+                &apos;style.loader&apos;,
+                //将css文件变成commonjs模块加载到js中，里面内容是样式字符串
+                &apos;css-loader&apos;
+            ]
+        },</code></pre><h2 id="webpack打包HTML文件配置"><a href="#webpack打包HTML文件配置" class="headerlink" title="webpack打包HTML文件配置"></a>webpack打包HTML文件配置</h2><pre><code>//引入插件
+const HtmlWebpackPlugin = require(&apos;./html-webpack-plugin&apos;);
+plugins:{
+    //详细plugins的配置
+    new HtmlWebpackPlugin({
+        template:&apos;./src/index.html&apos;
+    })
+    },</code></pre><h2 id="webpack打包图片资源配置"><a href="#webpack打包图片资源配置" class="headerlink" title="webpack打包图片资源配置"></a>webpack打包图片资源配置</h2><pre><code>rules:{
+        test:/\.(jpg|png|gif)$/,
+        options:{
+            limit: 8*1024,//不能大于8KB
+            name:&apos;[hash:10].[ext]&apos;//文件压缩后的名字
+
+        }
+},</code></pre><h2 id="webpack打包其他资源配置"><a href="#webpack打包其他资源配置" class="headerlink" title="webpack打包其他资源配置"></a>webpack打包其他资源配置</h2><pre><code>{
+    //处理其他资源
+    exclude:/\.(html|js|css|less|jpg|png|gif)/,
+    loader:&apos;file-loader&apos;,
+    options:{
+        name:&apos;[hash:10].[ext]&apos;//文件压缩后的名字
+    }
+}</code></pre><h2 id="devServer配置"><a href="#devServer配置" class="headerlink" title="devServer配置"></a>devServer配置</h2><pre><code>//devServer：每次更改代码都要再次打包，太麻烦，devServer能帮我们做到自动打包
+devServer:{
+    contentBase:resolve(_dirname,&apos;bulid&apos;),
+    compress:true,
+    port:3000,
+    open:true
+}</code></pre><h2 id="devtool配置"><a href="#devtool配置" class="headerlink" title="devtool配置"></a>devtool配置</h2><pre><code>可以查看[webpack官网](https://www.webpackjs.com/configuration/devtool/#devtool &quot;webpack官网&quot;)</code></pre><h2 id="提取css成单独文件"><a href="#提取css成单独文件" class="headerlink" title="提取css成单独文件"></a>提取css成单独文件</h2><h2 id="css兼容性处理"><a href="#css兼容性处理" class="headerlink" title="css兼容性处理"></a>css兼容性处理</h2><h2 id="压缩css"><a href="#压缩css" class="headerlink" title="压缩css"></a>压缩css</h2><pre><code>//提取css成单独文件的插件
+const MiniCssExtractPlugin = require(&apos;mini-css-extract-plugin&apos;);
+rules:{
+            //匹配哪些文件
+            test:/\.css$/,
+            //使用哪些loader进行处理
+            use:[
+                //use数组中loader执行顺序：从右到左，从下到上，依次执行
+                //作用：提取js中的css成单独文件,z这个loader取代style-loader。
+                MiniCssExtractPlugin.loader,
+                //将css文件整合到js文件中
+                &apos;css-loader&apos;
+                {
+                //对css做兼容处理
+                //还需要在package.json中定义browserslist
+                    loader: &apos;postcss-loader&apos;,
+                    options:{
+                        ident: &apos;postcss&apos;,
+                        plugins:()=&gt;{
+                            require(&apos;_postcss-preset-evn&apos;)()
+                        }
+                    }
+                }
+            ]
+        },</code></pre><h2 id="js语法检查eslint"><a href="#js语法检查eslint" class="headerlink" title="js语法检查eslint"></a>js语法检查eslint</h2><pre><code>//对js做语法检查
+    {
+        //还需在package.json中eslintConfig 设置成 airbnb
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: &apos;eslint-loader&apos;,
+        //自动修改js中的语法错误
+        options:{
+            fix:true
+        }
+    },</code></pre><h2 id="js兼容性处理"><a href="#js兼容性处理" class="headerlink" title="js兼容性处理"></a>js兼容性处理</h2><pre><code>//对js做兼容性处理
+    {
+        //还需在package.json中eslintConfig 设置成 airbnb
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: &apos;babel-loader&apos;,
+        options:{
+            presets:{
+                &apos;@babel/preset-env&apos;,
+                {
+                    useBuiltIns: &apos;usage&apos;,
+                    corejs:{version:3},
+                    targets:{
+                        chrome: &apos;60&apos;,
+                        firefox: &apos;50&apos;
+                    }
+                }
+            }
+        }
+    },</code></pre><h2 id="压缩js-html"><a href="#压缩js-html" class="headerlink" title="压缩js/html"></a>压缩js/html</h2><pre><code>js在生产环境自己会压缩
+//详细plugins的配置
+    new HtmlWebpackPlugin({
+        template:&apos;./src/index.html&apos;,
+        //对html做压缩处理
+        minify:{
+            collapseWhitespace:true,//去除空格
+            removeComments:true//去除注释
+        }
+    })，</code></pre><h2 id="webpack开发环境的基本配置-1"><a href="#webpack开发环境的基本配置-1" class="headerlink" title="webpack开发环境的基本配置"></a>webpack开发环境的基本配置</h2><pre><code>//resolve用来拼接绝对路径的方法
+const {resolve} = require(&apos;path&apos;);
+//引入插件
+const HtmlWebpackPlugin = require(&apos;./html-webpack-plugin&apos;);
+//提取css成单独文件的插件
+const MiniCssExtractPlugin = require(&apos;mini-css-extract-plugin&apos;);
+//对js做压缩的插件
+const OptimizeCssAssetsWebpackPlugin = require(&apos;optimize-css-assets-webpack-plugin&apos;);
 module.exports = {
 //webpack配置
 //打包入口文件
@@ -235,20 +424,125 @@ module:{
             //使用哪些loader进行处理
             use:[
                 //use数组中loader执行顺序：从右到左，从下到上，依次执行
-                //创建style标签，将js中的样式资源插入到html文件里的head标签中生效
-                &apos;style.loader&apos;,
-                //将css文件变成commonjs模块加载到js中，里面内容是样式字符串
+                //作用：提取js中的css成单独文件,z这个loader取代style-loader。
+                MiniCssExtractPlugin.loader,
+                //将css文件整合到js文件中
                 &apos;css-loader&apos;
+                {
+                //对css做兼容处理
+                //还需要在package.json中定义browserslist
+                    loader: &apos;postcss-loader&apos;,
+                    options:{
+                        ident: &apos;postcss&apos;,
+                        plugins:()=&gt;{
+                            require(&apos;_postcss-preset-evn&apos;)()
+                        }
+                    }
+                }
             ]
+        },
+    rules:{
+        test:/\.less$/,
+        use:{
+            MiniCssExtractPlugin.loader,
+            &apos;css-loader&apos;,
+            {
+                //对css做兼容处理
+                //还需要在package.json中定义browserslist
+                    loader: &apos;postcss-loader&apos;,
+                    options:{
+                        ident: &apos;postcss&apos;,
+                        plugins:()=&gt;{
+                            require(&apos;_postcss-preset-evn&apos;)()
+                        }
+                    }
+                }
+            &apos;less-loader&apos;
         }
+    },
+     rules:{
+        test:/\.(jpg|png|gif)$/,
+        options:{
+            limit: 8*1024,//不能大于8KB
+            name:&apos;[hash:10].[ext]&apos;//文件压缩后的名字,
+            outputPath: &apos;imgs&apos;,
+            //url-loader默认使用es6模块化解析，而html-loader引入图片是commonjs，解析时会出问题
+            esModule:false
+
+        }
+    },
+    {
+        //处理其他资源
+        exclude:/\.(html|js|css|less|jpg|png|gif)/,
+        loader:&apos;file-loader&apos;,
+        options:{
+            name:&apos;[hash:10].[ext]&apos;//文件压缩后的名字
+        }
+    },
+    //对js做语法检查
+    {
+        //还需在package.json中eslintConfig 设置成 airbnb
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: &apos;eslint-loader&apos;,
+        //自动修改js中的语法错误
+        options:{
+            fix:true
+        }
+    },
+    //对js做兼容性处理
+    {
+        //还需在package.json中eslintConfig 设置成 airbnb
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: &apos;babel-loader&apos;,
+        options:{
+            presets:{
+                &apos;@babel/preset-env&apos;,
+                {
+                    useBuiltIns: &apos;usage&apos;,
+                    corejs:{version:3},
+                    targets:{
+                        chrome: &apos;60&apos;,
+                        firefox: &apos;50&apos;
+                    }
+                }
+            }
+        }
+    },
+    //html处理不了图片，所有要用html-loader
+    {
+        test: /\.html$/,
+        loader: &apos;html-loader&apos;
+    }
     }
 //plugins的配置
 plugins:{
     //详细plugins的配置
-    },
+    new HtmlWebpackPlugin({
+        template:&apos;./src/index.html&apos;,
+        //对html做压缩处理
+        minify:{
+            collapseWhitespace:true,//去除空格
+            removeComments:true//去除注释
+        }
+    })，
+    new MiniCssExtractPlugin({
+        //重命名css文件
+        filename: &apos;css/built.css&apos;
+    }),
+    //对js做压缩处理
+    new OptimizeCssAssetsWebpackPlugin()
+},
+devServer:{
+    contentBase:resolve(_dirname,&apos;bulid&apos;),
+    compress:true,
+    port:3000,
+    open:true
+}
 //模式
-mode:&apos;development&apos;,//开发模式
-//mode:&apos;production&apos; //生产模式
+//mode:&apos;development&apos;,//开发模式
+mode:&apos;production&apos; //生产模式
 }</code></pre>
       
     </div>
