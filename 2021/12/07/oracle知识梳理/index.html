@@ -28,7 +28,7 @@
 <meta property="og:description" content="单行函数  字符函数  initcap(char): 返回的字符首字母大写 例如：initcap (&amp;apos;hello&amp;apos;) 结果：Hello  lower(): 返回的字符转换为小写 例如：lower (&amp;apos;FUN&amp;apos;) 结果：fun  upper(char): 返回的字符转换为大写 例如：upper (&amp;apos;sun&amp;apos;) 结果：SUN  ltrim(">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-12-07T13:18:59.858Z">
-<meta property="article:modified_time" content="2021-12-07T15:31:16.507Z">
+<meta property="article:modified_time" content="2021-12-08T13:50:28.647Z">
 <meta property="article:author" content="jrjwhite">
 <meta name="twitter:card" content="summary">
 
@@ -192,10 +192,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-12-07 21:18:59 / 修改时间：23:31:16" itemprop="dateCreated datePublished" datetime="2021-12-07T21:18:59+08:00">2021-12-07</time>
+              <time title="创建时间：2021-12-07 21:18:59" itemprop="dateCreated datePublished" datetime="2021-12-07T21:18:59+08:00">2021-12-07</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-12-08 21:50:28" itemprop="dateModified" datetime="2021-12-08T21:50:28+08:00">2021-12-08</time>
+              </span>
 
           
             <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
@@ -367,19 +373,64 @@ count(distinct 字段名),可以先去除重复再计数。</code></pre></li>
 <hr>
 <ul>
 <li>递归查询<ul>
-<li>select … from 表名 start with  条件1  connect by 条件2     where 条件3;</li>
+<li>select … from 表名 start with  条件1  connect by prior 条件2  where 条件3;</li>
+<li>例如：select * from tablename start with zbname = ‘上海’ connet by prior zbid(zbname等于上海的zbid) = zbfid(表里所有的zbfid) 。该语句是查出属于上海所有的区域信息</li>
 </ul>
 </li>
 </ul>
 <hr>
 <ul>
-<li>触发器</li>
+<li><p>触发器</p>
+<p>  触发器分before和after表示之前和之后</p>
+<ul>
+<li><p>行级触发器</p>
+<pre><code>例子：
+
+    创建触发器：实现id的隐式自增
+    create or replace(如果有该触发器就覆盖，没有就创建) trigger modify_stu(触发器的名字) 
+    before insert on student
+    for each row （针对每一条数据）
+    declare
+    next_id number;
+    begin
+      select seq_test.nextval into next_id from dual(伪表);
+      :new.id :=next_id;
+    end;</code></pre></li>
+<li><p>语句级触发器</p>
+<pre><code>例子：
+
+    只执行一次，针对一条数据
+    create or replace(如果有该触发器就覆盖，没有就创建) trigger modify_stu(触发器的名字)
+
+    before（表示插入，修改，删除之前执行begin下面语句） insert or update or delete on student
+    begin
+       if deleting then
+         raise_application_error(-20001,&apos;该表不允许删除数据&apos;);
+       elsif updating then
+         raise_application_error(-20002,&apos;该表不允许修改数据&apos;);
+        elsif inserting then
+         raise_application_error(-20003,&apos;该表不允许插入数据&apos;);
+        end if;
+    end;</code></pre></li>
+</ul>
+</li>
 </ul>
 <hr>
 <ul>
 <li>排序<ul>
 <li>order by 字段名 asc(默认可不写)：按字段名正序排序</li>
 <li>order by 字段名 desc ：按字段名正序排序</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>分组查询</p>
+<ul>
+<li><p>例子：</p>
+<pre><code>select sex from user_table group by sex(select右边必要要有sex字段不然报错)
+
+ 该语句会把user_table表里所有的性别分组查出来</code></pre></li>
 </ul>
 </li>
 </ul>
