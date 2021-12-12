@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Promise的理解 概念上的理解 Promise是JavaScript中进行异步编程的新的解决方案   语法上的理解 Promise是一个构造函数   功能上的理解 promise对象用封装一个异步操作来获取其结果    使用Promise的原因 指定回调函数的方式更加灵活，支持链式调用，可以解决回调地狱问题  Promise语法&#x2F;&#x2F;1.创建一个Promise对象 var promise &#x3D; n">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Promise">
+<meta property="og:url" content="http://yoursite.com/2021/09/03/promise%E9%87%8D%E7%82%B9%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:site_name" content="jrjwhite个人博客">
+<meta property="og:description" content="Promise的理解 概念上的理解 Promise是JavaScript中进行异步编程的新的解决方案   语法上的理解 Promise是一个构造函数   功能上的理解 promise对象用封装一个异步操作来获取其结果    使用Promise的原因 指定回调函数的方式更加灵活，支持链式调用，可以解决回调地狱问题  Promise语法&#x2F;&#x2F;1.创建一个Promise对象 var promise &#x3D; n">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-09-03T14:47:53.220Z">
+<meta property="article:modified_time" content="2021-09-11T07:19:06.962Z">
+<meta property="article:author" content="jrjwhite">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2021/09/03/promise%E9%87%8D%E7%82%B9%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Promise | jrjwhite个人博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+    <a href="https://github.com/jrjwhite" target="_blank" rel="noopener" class="github-corner" aria-label="View source on GitHub"></a>
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">jrjwhite个人博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/09/03/promise%E9%87%8D%E7%82%B9%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="jrjwhite">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jrjwhite个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Promise
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-09-03 22:47:53" itemprop="dateCreated datePublished" datetime="2021-09-03T22:47:53+08:00">2021-09-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-09-11 15:19:06" itemprop="dateModified" datetime="2021-09-11T15:19:06+08:00">2021-09-11</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="Promise的理解"><a href="#Promise的理解" class="headerlink" title="Promise的理解"></a>Promise的理解</h2><ul>
+<li>概念上的理解<ul>
+<li>Promise是JavaScript中进行异步编程的新的解决方案</li>
+</ul>
+</li>
+<li>语法上的理解<ul>
+<li>Promise是一个构造函数</li>
+</ul>
+</li>
+<li>功能上的理解<ul>
+<li>promise对象用封装一个异步操作来获取其结果</li>
+</ul>
+</li>
+</ul>
+<h2 id="使用Promise的原因"><a href="#使用Promise的原因" class="headerlink" title="使用Promise的原因"></a>使用Promise的原因</h2><ul>
+<li>指定回调函数的方式更加灵活，支持链式调用，可以解决<a href="https://www.cnblogs.com/ceceliahappycoding/p/12852333.html" target="_blank" rel="noopener" title="回调地狱问题">回调地狱问题</a></li>
+</ul>
+<h2 id="Promise语法"><a href="#Promise语法" class="headerlink" title="Promise语法"></a>Promise语法</h2><pre><code>//1.创建一个Promise对象
+var promise = new Promise((resolve,reject)=&gt;{
+ //2.执行异步操作任务
+  setTimeout(()=&gt;{
+     const date = Date.now()
+      //3.如果成功了，调用resolve()
+      if(date%2==0){
+       resolve(&apos;成功的数据：&apos;+date)
+      }else{
+      //4.如果失败了，调用reject()
+       reject(&apos;失败的数据：&apos;+date)
+       }
+   },1000)
+ }).then(
+    value =&gt;{
+      console.log(&apos;接受到成功的数据&apos;,value)
+   },
+    reason =&gt;{
+       console.log(&apos;接受到失败的数据&apos;,reason)
+     }
+ )</code></pre><h1 id="Promise的API"><a href="#Promise的API" class="headerlink" title="Promise的API"></a>Promise的API</h1><ul>
+<li>Promise构造函数：new Promise（excutor){}<ul>
+<li>excutor函数：同步执行（resolve，reject）=&gt;{}</li>
+<li>resolve函数：内部定义成功时我们调用的函数 (value)=&gt;{}</li>
+<li>reject函数：内部定义失败时我们调用的函数 (reason)=&gt;{}</li>
+</ul>
+</li>
+</ul>
+<p>说明：excutor会在Promise内部立即同步回调，异步操作在执行器中执行。</p>
+<ul>
+<li>Promise.prototype.then方法：(onResolved, onRejected)=&gt;{}<ul>
+<li>onResolved函数：成功的回调函数（value）=&gt; {}</li>
+<li>onRejected函数：失败的回调函数（reason）=&gt; {}</li>
+</ul>
+</li>
+</ul>
+<p>说明：指定用于得到成功resolve函数的value值的成功回调和用于失败reject函数的reason值的失败回调返回一个新的promise对象</p>
+<ul>
+<li>Promise.prototype.catch方法：(onRejected) =&gt; {}<ul>
+<li>onRejected函数：失败的回调函数（reason）=&gt; {}</li>
+</ul>
+</li>
+</ul>
+<p>说明：then()的语法糖，相当于then(undefined,onRejected)</p>
+<ul>
+<li>Promise.resolve方法：(value) =&gt; {}<ul>
+<li>value: 成功的数据或promise对象</li>
+</ul>
+</li>
+</ul>
+<p>说明：返回一个成功/失败的Promise对象</p>
+<ul>
+<li>Promise.reject方法：(reason) =&gt; {}<ul>
+<li>reason：失败的原因</li>
+</ul>
+</li>
+</ul>
+<p>说明：返回一个失败的promise对象</p>
+<ul>
+<li>Promise.all方法：(promise) =&gt; {}<ul>
+<li>promises:包含n个promise的数组</li>
+</ul>
+</li>
+</ul>
+<p>说明：返回一个新的promise，只有所有的promise都成功才成功，只要一个失败了就直接失败</p>
+<ul>
+<li>promise.race方法：(promises) =&gt; {}<ul>
+<li>promises:包含n个promise的数组</li>
+</ul>
+</li>
+</ul>
+<p>说明：返回一个新的promise，第一个完成的promise的结果就是最终的结果状态。</p>
+<h2 id="关于Promise的关键问题"><a href="#关于Promise的关键问题" class="headerlink" title="关于Promise的关键问题"></a>关于Promise的关键问题</h2><ol>
+<li><p>如何改变promise的状态(fulfilled,rejected,pendding):</p>
+<p>resolve(value)函数：把pendding(待定状态)变为fulfilled(成功状态)。</p>
+<p>reject(reason)函数：把pedding(待定状态)变为rejected(失败状态)</p>
+<p>抛出异常：如果当前是pendding(待定状态)就会变为rejected(失败状态)</p>
+</li>
+</ol>
+<ol start="2">
+<li><p>一个promise指定多个成功/失败回调函数，都会调用吗？</p>
+<p>当promise改变对于的状态时对应的回调函数都会调用</p>
+</li>
+<li><p>改变promise状态和指定回调函数谁先谁后？</p>
+<p>都有可能，正常情况下是先指定回调函数再改变状态，但也可以先改变状态再指定回调函数。</p>
+</li>
+<li><p>如何先改变状态再指定回调函数</p>
+<p>（1）在执行器中直接调用resolve()/reject()(也就是resolve和reject不在异步操作里）<br>（2）延迟更长的时间才调用then()</p>
+</li>
+<li><p>什么时候才能得到数据?</p>
+<p>(1)如果先指定回调函数，那当状态改变时，回调函数就会调用，得到数据<br>(2)如果先改变的状态，那当指定回调时，回调函数就会调用，得到数据</p>
+</li>
+<li><p>promise.then()返回新的promise的结果，它状态是有什么决定的？</p>
+<p>（1）简单描述：由then()指定的回调函数执行的结果决定的</p>
+<p>（2）详细表达：</p>
+<pre><code>1.如果抛出异常，新的promise变为rejected，reason为抛出异常的结果
+
+2.如果返回的是非promise的任意值，新promise变为resolved，value为返回的值
+
+3.如果返回的是另一个新的promise，此promise的结果就会成为新promise的结果</code></pre></li>
+<li><p>promise如何串联多个操作任务？</p>
+<p>（1）promise的then()返回一个新的promise，可以接着.then()链式调用</p>
+<p>（2）通过then()的链式调用串联多个同步/异步任务</p>
+</li>
+<li><p>promise异常传透？</p>
+<p>当使用promise的then链式调用时，可以在最后指定失败的回调函数，前面任何操作出了异常，都会传到最后失败的回调中去处理。</p>
+</li>
+<li><p>中断promise链</p>
+<p>当使用promise的then链式调用时，在中间中断，不在调用后面的回调函数，在回调函数中返回一个pendding状态的promise对象。</p>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>jrjwhite
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2021/09/03/promise%E9%87%8D%E7%82%B9%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" title="Promise">http://yoursite.com/2021/09/03/promise重点知识总结/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/07/19/Grunt%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/" rel="prev" title="Grunt快速入门教程">
+      <i class="fa fa-chevron-left"></i> Grunt快速入门教程
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/09/03/javascript%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%9A%84%E5%87%A0%E7%A7%8D%E9%94%99%E8%AF%AF%E7%B1%BB%E5%9E%8B/" rel="next" title="JavaScript中常见的几种错误类型">
+      JavaScript中常见的几种错误类型 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC81NDAwNS8zMDQ3Nw=="></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Promise的理解"><span class="nav-number">1.</span> <span class="nav-text">Promise的理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用Promise的原因"><span class="nav-number">2.</span> <span class="nav-text">使用Promise的原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Promise语法"><span class="nav-number">3.</span> <span class="nav-text">Promise语法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Promise的API"><span class="nav-number"></span> <span class="nav-text">Promise的API</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于Promise的关键问题"><span class="nav-number">1.</span> <span class="nav-text">关于Promise的关键问题</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="jrjwhite"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">jrjwhite</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">jrjwhite</span>
+</div>
+  <div class="powered-by">
+    <!--由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动 -->
+  </div>
+
+
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+     <!-- <span class="post-meta-divider">|</span> -->
+    <span id="busuanzi_container_site_uv">总访客数<span id="busuanzi_value_site_uv"></span>人</span>
+     <!-- <span class="post-meta-divider">|</span> -->
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+$(document).ready(function() {
+
+    var int = setInterval(fixCount, 50);  // 50ms周期检测函数
+    var countOffset = 20000;  // 初始化首次数据
+
+    function fixCount() {            
+       if (document.getElementById("busuanzi_container_site_pv").style.display != "none")
+        {
+            $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + countOffset); 
+            clearInterval(int);
+        }                  
+        if ($("#busuanzi_container_site_pv").css("display") != "none")
+        {
+            $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + countOffset); // 加上初始数据 
+            clearInterval(int); // 停止检测
+        }  
+    }
+       	
+});
+</script> 
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+</body>
+</html>
