@@ -20,17 +20,19 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="http://yoursite.com/tags/index.html">
+  <meta name="description" content="解构赋值的小技巧在遇见多层嵌套的对象时，我们需要对象中的某些属性的值，就需要将其解构出来使用。例如： let book &#x3D; { book1:{     name: &amp;apos;js&amp;apos;,     price: 45     } }  const {book1:{name, price}} &#x3D; book console.log(name,price)&#x2F;&#x2F;js 45 console.log(b">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript实用小技巧">
+<meta property="og:url" content="http://yoursite.com/2021/12/09/javascript%E5%AE%9E%E7%94%A8%E5%B0%8F%E6%8A%80%E5%B7%A7/index.html">
 <meta property="og:site_name" content="jrjwhite个人博客">
+<meta property="og:description" content="解构赋值的小技巧在遇见多层嵌套的对象时，我们需要对象中的某些属性的值，就需要将其解构出来使用。例如： let book &#x3D; { book1:{     name: &amp;apos;js&amp;apos;,     price: 45     } }  const {book1:{name, price}} &#x3D; book console.log(name,price)&#x2F;&#x2F;js 45 console.log(b">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-08-28T06:12:07.792Z">
-<meta property="article:modified_time" content="2021-08-28T06:12:07.792Z">
+<meta property="article:published_time" content="2021-12-09T12:40:28.333Z">
+<meta property="article:modified_time" content="2021-12-12T14:13:55.267Z">
 <meta property="article:author" content="jrjwhite">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/tags/">
+<link rel="canonical" href="http://yoursite.com/2021/12/09/javascript%E5%AE%9E%E7%94%A8%E5%B0%8F%E6%8A%80%E5%B7%A7/">
 
 
 <script id="page-configurations">
@@ -38,13 +40,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>tags | jrjwhite个人博客
-</title>
+  <title>JavaScript实用小技巧 | jrjwhite个人博客</title>
   
 
 
@@ -161,43 +162,157 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-  
-  
 
-          <div class="content page posts-expand">
+          <div class="content post posts-expand">
             
 
     
-    
-    
-    <div class="post-block" lang="zh-CN">
-      <header class="post-header">
-
-<h1 class="post-title" itemprop="name headline">tags
-</h1>
-
-<div class="post-meta">
   
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/12/09/javascript%E5%AE%9E%E7%94%A8%E5%B0%8F%E6%8A%80%E5%B7%A7/">
 
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="jrjwhite">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jrjwhite个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JavaScript实用小技巧
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-12-09 20:40:28" itemprop="dateCreated datePublished" datetime="2021-12-09T20:40:28+08:00">2021-12-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-12-12 22:13:55" itemprop="dateModified" datetime="2021-12-12T22:13:55+08:00">2021-12-12</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="解构赋值的小技巧"><a href="#解构赋值的小技巧" class="headerlink" title="解构赋值的小技巧"></a>解构赋值的小技巧</h2><p>在遇见多层嵌套的对象时，我们需要对象中的某些属性的值，就需要将其解构出来使用。例如：</p>
+<pre><code>let book = {
+book1:{
+    name: &apos;js&apos;,
+    price: 45
+    }
+}
+
+const {book1:{name, price}} = book
+console.log(name,price)//js 45
+console.log(book1)//ReferenceError: book1 is not defined</code></pre><p>这种情况下，虽然把name和price从book1里解构出来了，但是使用book1，就会报错。这是就要用到我们的小技巧，如下：</p>
+<pre><code>let book = {
+book1:{
+    name: &apos;js&apos;,
+    price: 45
+    }
+}
+
+const {book1:{name, price},book1} = book
+console.log(name,price)//js 45
+console.log(book1)//{ name: &apos;js&apos;, price: 45 }</code></pre><h2 id="一行代码生成随机验证码"><a href="#一行代码生成随机验证码" class="headerlink" title="一行代码生成随机验证码"></a>一行代码生成随机验证码</h2><p>以前生成随机验证码是这样做的：</p>
+<pre><code>function hash () {
+  let s = &apos;&apos;
+  const strs = [
+    &apos;a&apos;, &apos;b&apos;, &apos;c&apos;, &apos;d&apos;, &apos;e&apos;, &apos;f&apos;, &apos;g&apos;, 
+    &apos;h&apos;, &apos;i&apos;, &apos;j&apos;, &apos;k&apos;, &apos;l&apos;, &apos;m&apos;, &apos;n&apos;, 
+    &apos;o&apos;, &apos;p&apos;, &apos;q&apos;, &apos;r&apos;, &apos;s&apos;, &apos;t&apos;, &apos;u&apos;, 
+    &apos;v&apos;, &apos;w&apos;, &apos;x&apos;, &apos;y&apos;, &apos;z&apos;, &apos;0&apos;, &apos;1&apos;, 
+    &apos;2&apos;, &apos;3&apos;, &apos;4&apos;, &apos;5&apos;, &apos;6&apos;, &apos;7&apos;, &apos;8&apos;,
+    &apos;9&apos;,
+  ]
+  for(let i = 0; i &lt; 4; i++) {
+    s += strs[Math.floor(Math.random() * strs.length)]
+  }
+  return s
+}
+
+hash()  // &apos;o6rg&apos;</code></pre><p>很麻烦，用26个字符和10个数字要写半天，现在有个小技巧只需一行超短代码即可实现随机生成验证码.</p>
+<pre><code>const str = Math.random().toString(36).substr(2, 4);
+console.log(str); // &apos;f4ci&apos;</code></pre><p>先是 Math.random() 生成 [0, 1) 的数，也就是 0.123312、0.982931之类的，然后调用 number 的 toString方法将其转换成36进制的，按照MDN的说法，36进制的转换应该是包含了字母 a<del>z 和 数字0</del>9的，因为这样生成的是 0.89kjna21sa 类似这样的，所以要截取一下小数部分，即从索引2开始截取4个字符就是我们想要的随机字符串了.</p>
+<h2 id="最快获取dom的方法"><a href="#最快获取dom的方法" class="headerlink" title="最快获取dom的方法"></a>最快获取dom的方法</h2><pre><code>&lt;div id=&apos;box&apos;&gt;&lt;/div&gt;
+现在可以这样
+console.log(box)// &lt;div id=&apos;box&apos;&gt;&lt;/div&gt;
+此方式只能id选择器使用，因为id选择器是唯一的</code></pre><h2 id="数字间隔符"><a href="#数字间隔符" class="headerlink" title="数字间隔符"></a>数字间隔符</h2><pre><code>const num = 1000000000000
+这样的数字阅读起来很不方便</code></pre><p>所以我们用数字间隔符，就能很好的阅读。<br>    const num = 1_000_000_000_000<br>    console.log(num)  // 1000000000000</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>jrjwhite
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2021/12/09/javascript%E5%AE%9E%E7%94%A8%E5%B0%8F%E6%8A%80%E5%B7%A7/" title="JavaScript实用小技巧">http://yoursite.com/2021/12/09/javascript实用小技巧/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
 </div>
 
-</header>
 
-      
-      
-      
-      <div class="post-body">
-          
-      </div>
-      
-      
-      
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/12/08/js%E4%B8%AD%E6%95%B0%E7%BB%84reduce%E5%87%BD%E6%95%B0%E5%B8%B8%E7%94%A8%E5%9C%BA%E6%99%AF/" rel="prev" title="js中数组的reduce函数常用场景">
+      <i class="fa fa-chevron-left"></i> js中数组的reduce函数常用场景
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/12/12/vue%E4%B8%AD%E7%9A%84%E6%B7%B1%E5%BA%A6%E9%80%89%E6%8B%A9%E5%99%A8/" rel="next" title="Vue中的深度选择器的使用场景">
+      Vue中的深度选择器的使用场景 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
+      </footer>
     
+  </article>
+  
+  
+  
 
-    
-    
-    
 
 
           </div>
@@ -253,6 +368,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#解构赋值的小技巧"><span class="nav-number">1.</span> <span class="nav-text">解构赋值的小技巧</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一行代码生成随机验证码"><span class="nav-number">2.</span> <span class="nav-text">一行代码生成随机验证码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最快获取dom的方法"><span class="nav-number">3.</span> <span class="nav-text">最快获取dom的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数字间隔符"><span class="nav-number">4.</span> <span class="nav-text">数字间隔符</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
