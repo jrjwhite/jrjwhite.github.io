@@ -190,7 +190,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-12-12 22:23:52 / 修改时间：23:24:02" itemprop="dateCreated datePublished" datetime="2021-12-12T22:23:52+08:00">2021-12-12</time>
+              <time title="创建时间：2021-12-12 22:23:52 / 修改时间：23:41:48" itemprop="dateCreated datePublished" datetime="2021-12-12T22:23:52+08:00">2021-12-12</time>
             </span>
 
           
@@ -204,14 +204,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>在vue文件中当<Style>标签有scoped属性时，他的CSS样式只影响当前的组件的样式，我们想要把当前的样式应用到当先组件的子组件，需要使用深度选择器。</p>
-<pre><code>&lt;style scoped&gt;
+          <h2 id="Vue中的深度选择器的使用场景"><a href="#Vue中的深度选择器的使用场景" class="headerlink" title="Vue中的深度选择器的使用场景"></a>Vue中的深度选择器的使用场景</h2><pre><code>在vue文件中当&lt;Style&gt;标签有scoped属性时，
+他的CSS样式只影响当前的组件的样式，
+我们想要把当前的样式应用到当先组件的子组件，需要使用深度选择器。
+&lt;style scoped&gt;
 div &gt;&gt;&gt; p{
   color: red;
 }
 &lt;/style&gt;
-但&gt;&gt;&gt;不能在less和scss中使用，它无法被解析</code></pre><p>这样可以在less和scss中使用</p>
-<pre><code>&lt;style scoped&gt;
+但&gt;&gt;&gt;不能在less和scss中使用，它无法被解析</code></pre><hr>
+<pre><code>这样可以在less和scss中使用
+
+&lt;style scoped&gt;
 div /deep/ p{
   color: red;
 }
